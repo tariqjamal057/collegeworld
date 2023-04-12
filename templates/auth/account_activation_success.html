@@ -1,0 +1,14 @@
+{% extends 'auth/layout/app.html' %}
+
+{% block title %} Account verification {% endblock title %}
+
+
+{% block body %}
+{% if is_success %}
+<p><b>{{ username }}</b> your account has been activated successfully.</p>
+<p>You can login now</p>
+<a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+{% else %}
+<h2 class="text-danger">Something went wrong</h2>
+{% endif %}
+{% endblock body %}

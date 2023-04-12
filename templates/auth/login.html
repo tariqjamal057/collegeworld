@@ -1,0 +1,27 @@
+{% extends 'auth/layout/app.html' %}
+
+{% block title %} Login {% endblock title %}
+
+{% block heading %}
+Login with your credentials
+{% endblock heading %}
+
+{% block body %}
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="email" class="form-label mb-3.6 text-sm fs-6">Email address<span class="text-danger">*</span></label>
+        <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label mb-3.6 text-sm fs-6">Password<span class="text-danger">*</span></label>
+        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
+    </div>
+    {% for message in messages %}
+        <p id="reason_error" class="text-danger text-sm">{{ message }}</p>
+    {% endfor %}
+    <a href="{% url 'reset-password' %}" class="text-sm1">Forgot password?</a>
+    <p class="mt-3 text-sm1">Don't have an account <a href="{% url 'register' %}">register</a></p>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+{% endblock body %}

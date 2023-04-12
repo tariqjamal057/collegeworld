@@ -1,0 +1,57 @@
+{% extends 'auth/layout/app.html' %}
+
+{% block title %} Register {% endblock title %}
+
+{% block style %}
+    <style>
+        @media(max-width: 700px) {
+            .hidden {
+                display: none;
+            }
+        }
+    </style>
+{% endblock style %}
+
+{% block heading %}
+Create an account with your credentials
+{% endblock heading %}
+
+{% block body %}
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <div class="mb-3">
+        <ul>
+            {% for message in messages %}
+            <li class="text-danger">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {{ form.non_field_errors|show_non_field_errors }}
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                {{ form.username |show_label }}
+                {{ form.username }}
+                {{ form.username |show_field_errors }}
+            </div>
+            <div class="col-md-12 mb-3">
+                {{ form.email |show_label }}
+                {{ form.email }}
+                {{ form.email |show_field_errors }}
+            </div>
+            <div class="col-md-12 mb-3">
+                {{ form.password1 |show_label }}
+                {{ form.password1 }}
+                {{ form.password1 |show_field_errors }}
+            </div>
+            <div class="col-md-12 mb-3">
+                {{ form.password2 |show_label }}
+                {{ form.password2 }}
+                {{ form.password2 |show_field_errors }}
+            </div>
+        </div>
+    </div>
+    <p class="text-sm1">Already have an account <a href="{% url 'login' %}">login</a></p>
+    <button type="submit" class="btn btn-primary btn-sm">Register</button>
+</form>
+
+{% endblock body %}

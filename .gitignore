@@ -1,0 +1,8 @@
+authentication/__pycache__
+authentication/migrations/__pycache__
+college/__pycache__
+college/migrations/__pycache__
+collegeworld/__pycache__
+core/__pycache__
+
+.env
