@@ -1,180 +1,208 @@
-<!DOCTYPE html>
+{% load static %}
+
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<title>Title</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <style>
-        .sticky {
-    background: #fff;
-    width: 100%;
-    color: black;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    
-}
-p {
-    margin-bottom: 0px !important;
-}
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
+	<!-- Bootstrap CSS v5.2.1 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
-.flex-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-}
+	<!-- This code is linking to Google Fonts and preconnecting to the domain to reduce the time it takes to
+	establish a connection. It is also loading two font families, Lobster Two and Open Sans, with
+	different weights and styles. -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
-.flex-item img {
-  width: 100px;
-  height: 100px;
-  margin-bottom: 10px;
-}
-
-    </style>
+	<!-- Custom CSS Link -->
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" id="navbar-st" style="
-    padding: 15px;
-    position: fixed;
-    width: 100%;
-">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">COLLEGE WORLD</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Find Colleges </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Get Admission </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Explore Exams </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">News </a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-primary" type="submit">Search</button>
-            </form>
+	
+
+	<main>
+		<div class="main bg-primary">
+			<header>
+        <nav class="navbar navbar-expand-lg bg-tranparent">
+          <div class="container">
+              <a class="navbar-brand text-primary logo" href="#">College World</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                      <li class="nav-item">
+                          <a class="nav-link active text-primary" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active text-primary" aria-current="page" href="#">Colleges</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active text-primary" aria-current="page" href="#">Study Abroad</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active text-primary" aria-current="page" href="#">Exams</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link active text-primary" aria-current="page" href="#">News</a>
+                      </li>
+                      <li class="nav-item dropdown text-primary ">
+                          <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button"
+                              data-bs-toggle="dropdown" aria-expanded="false">
+                              More
+                          </a>
+                          <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                              <li><a class="dropdown-item text-white" href="#">Write Reviews</a></li>
+                              <li><a class="dropdown-item text-white" href="#">Q&A</a></li>
+                              <li><a class="dropdown-item text-white" href="#">College Predictor</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-item dropdown text-primary ">
+                        <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <svg viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"
+                              stroke-width="0.00024000000000000003" style="width: 25px;">
+                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                              <g id="SVGRepo_iconCarrier">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 15.0141 20.6665 17.7167 18.5573 19.5501C18.0996 18.3251 17.306 17.2481 16.2613 16.4465C15.0388 15.5085 13.5409 15 12 15C10.4591 15 8.96118 15.5085 7.73867 16.4465C6.69405 17.2481 5.90038 18.3251 5.44269 19.5501C3.33349 17.7167 2 15.0141 2 12ZM16.8296 20.7059C16.8337 20.7212 16.8381 20.7363 16.8429 20.7512C15.4081 21.5469 13.757 22 12 22C10.243 22 8.59193 21.5469 7.15711 20.7512C7.16185 20.7363 7.16628 20.7212 7.17037 20.7059C7.45525 19.6427 8.08297 18.7033 8.95619 18.0332C9.82942 17.3632 10.8993 17 12 17C13.1007 17 14.1706 17.3632 15.0438 18.0332C15.917 18.7033 16.5448 19.6427 16.8296 20.7059ZM10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9ZM12 5C9.79086 5 8 6.79086 8 9C8 11.2091 9.79086 13 12 13C14.2091 13 16 11.2091 16 9C16 6.79086 14.2091 5 12 5Z"
+                                  fill="#a86db9"></path>
+                                <rect x="2.5" y="2.5" width="19" height="19" rx="9.5" stroke="#a86db9"></rect>
+                              </g>
+                            </svg>
+                        </a>
+                        <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item text-white" href="#">Profile</a></li>
+                            <li><a class="dropdown-item text-white" href="#">Logout</a></li>
+                        </ul>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+        </nav>
+			</header>
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center">
+          <div style="flex: 1;">
+            <p class="text-secondary m-0 text-sm">College Search Engine</p>
+            <h3 class="text-heading">Connect With College</h3>
+            <p class="text-secondary text-sm">College and scholorship programe are looking for student like you and help them find by joining our free college search engine </p>
+            <button class="bg-secondary text-white rounded-2 p-2 btn-explore btn text-sm">Explore Now &rarr;</button>
+          </div>
+          <img src="{% static 'images/home1.svg' %}" alt="" width="400px" height="400px" style="flex: 1">
+        </div>
+      </div>
+		</div>
+    <div class="container">
+      <div class="college-stats d-flex justify-content-center align-items-center flex-column my-5">
+        <h3 class="text-primary mb-4">College World Stats</h3>
+        <div class="card-container d-flex justify-content-around align-items-center w-100 ">
+          <div class="card d-flex flex-column justify-content-center align-items-center border-none">
+            <svg fill="#a36db6" height="50px" width="50px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 398.97 398.97" xml:space="preserve" stroke="#a36db6">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <g id="Layer_5_59_">
+                    <g>
+                      <path
+                        d="M225.092,276.586c-7.101,4.355-16.195,6.754-25.607,6.754c-9.412,0-18.506-2.398-25.607-6.754L57.946,205.484 c0,0-10.464-6.414-10.464,8.116c0,16.5,0,66,0,66c0,0.66,0,3.973,0,5c0,37.402,68.053,77.723,152,77.723s152-40.32,152-77.723 c0-1.027,0-4.34,0-5c0,0,0-52.502,0-70.003c0-11.663-7.439-5.964-7.439-5.964L225.092,276.586z">
+                      </path>
+                      <path
+                        d="M392.289,148.927c8.908-5.463,8.908-14.403,0-19.867L215.681,40.745c-8.908-5.463-23.485-5.463-32.393,0L6.681,129.06 c-8.908,5.463-8.908,14.403,0,19.867l176.607,108.315c8.908,5.463,23.485,5.463,32.393,0">
+                      </path>
+                      <path
+                        d="M384.985,309.475c0-29.906,0-119.625,0-119.625s0.083-5.666-3.279-3.795c-2.697,1.501-9.308,5.186-11.637,7.212 c-2.689,2.337-2.083,7.583-2.083,7.583s0,81.469,0,108.625c0,1.542-1.325,2.278-1.957,2.65 c-6.105,3.589-10.21,10.214-10.21,17.809c0,11.414,9.252,20.667,20.667,20.667c11.414,0,20.666-9.253,20.666-20.667 c0-7.624-4.135-14.27-10.279-17.85C386.262,311.728,384.985,311.016,384.985,309.475z">
+                      </path>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <h3 class="text-black">20,000+</h3>
+            <p class="text-secondary text-sm">College</p>
+          </div>
+          <div class="card d-flex flex-column justify-content-center align-items-center border-none">
+            <svg fill="#a86db9" style="width: 50px;height: 40px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.002 512.002" xml:space="preserve" stroke="#a86db9">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <g>
+                    <path
+                      d="M0,0.001v512h402.002v-512H0z M138.149,78.557h125.705v30.417H138.149V78.557z M321.127,433.445H80.875v-30.417h240.252 V433.445z M321.128,382.746H80.875v-30.417h240.253V382.746z M321.128,261.07H80.875v-30.417h240.253V261.07z M321.128,210.371 H80.875v-30.417h240.253V210.371z M321.128,159.673H80.875v-30.417h240.253V159.673z">
+                    </path>
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <polygon points="480.49,41.497 448.98,92.9 448.98,378.682 512,378.682 512,92.9 "></polygon>
+                  </g>
+                </g>
+                <g>
+                  <g>
+                    <rect x="448.978" y="409.102" width="63.024" height="50.695"></rect>
+                  </g>
+                </g>
+              </g>
+            </svg>
+            <h3 class="text-black">300+</h3>
+            <p class="text-secondary text-sm">Exams</p>
+          </div>
+          <div class="card d-flex flex-column justify-content-center align-items-center border-none">
+            <svg height="50px" width="50px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-51.2 -51.2 614.40 614.40" xml:space="preserve" fill="#000000"
+              stroke="#000000">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <style type="text/css">
+                  .st0 {
+                    fill: #a86db9;
+                  }
+                </style>
+                <g>
+                  <path class="st0"
+                    d="M92.574,294.24V124.336H43.277C19.449,124.336,0,144.213,0,168.467v206.44 c0,24.254,19.449,44.133,43.277,44.133h62v45.469c0,3.041,1.824,5.777,4.559,6.932c2.736,1.154,5.957,0.486,8.023-1.641 l49.844-50.76h106.494c23.828,0,43.279-19.879,43.279-44.133v-0.061H172.262C128.314,374.846,92.574,338.676,92.574,294.24z">
+                  </path>
+                  <path class="st0"
+                    d="M462.717,40H172.26c-27.105,0-49.283,22.59-49.283,50.197v204.037c0,27.61,22.178,50.199,49.283,50.199 h164.668l75.348,76.033c2.399,2.442,6.004,3.172,9.135,1.852c3.133-1.322,5.176-4.434,5.176-7.887v-69.998h36.131 c27.106,0,49.283-22.59,49.283-50.199V90.197C512,62.59,489.822,40,462.717,40z M369.156,280.115H195.92v-24.316h173.236V280.115z M439.058,204.129H195.92v-24.314h243.138V204.129z M439.058,128.143H195.92v-24.315h243.138V128.143z">
+                  </path>
+                </g>
+              </g>
+            </svg>
+            <h3 class="text-black">100,000+</h3>
+            <p class="text-secondary text-sm">Reviews</p>
           </div>
         </div>
-      </nav>
-      <div>
-        <img src="https://c0.wallpaperflare.com/preview/416/179/610/kings-college-cambridge-uk-university.jpg" alt="" style="height: 550px;width: 100%;">
       </div>
-      <h4 class="px-5 mt-5">Top Cites</h4>
-      <div class="flex-container">
-        <div class="flex-item">
-          <img src="https://as1.ftcdn.net/v2/jpg/02/81/01/82/1000_F_281018202_g9sN7xwFfYrds9Rsgp8UwaUNEvcaKOoq.jpg"/>
-          <h6>New Delhi</h6>
-        </div>
-        <div class="flex-item">
-          <img src="https://as1.ftcdn.net/v2/jpg/02/81/01/82/1000_F_281018202_g9sN7xwFfYrds9Rsgp8UwaUNEvcaKOoq.jpg"/>
-          <h6>Mumbai</h6>
-        </div>
-        <div class="flex-item">
-            <img src="https://as1.ftcdn.net/v2/jpg/02/81/01/82/1000_F_281018202_g9sN7xwFfYrds9Rsgp8UwaUNEvcaKOoq.jpg"/>
-            <h6>Bangalore</h6>
-        </div>
-        <div class="flex-item">
-            <img src="https://as1.ftcdn.net/v2/jpg/02/81/01/82/1000_F_281018202_g9sN7xwFfYrds9Rsgp8UwaUNEvcaKOoq.jpg"/>
-            <h6>Hyderabad</h6>
-        </div>
-        <div class="flex-item">
-            <img src="https://as1.ftcdn.net/v2/jpg/02/81/01/82/1000_F_281018202_g9sN7xwFfYrds9Rsgp8UwaUNEvcaKOoq.jpg"/>
-          <h6>Chennai</h6>
-        </div>
-        <div class="flex-item">
-            <img src="https://as1.ftcdn.net/v2/jpg/02/81/01/82/1000_F_281018202_g9sN7xwFfYrds9Rsgp8UwaUNEvcaKOoq.jpg"/>
-          <h6>Coimbatore</h6>
-        </div>
-        <div class="flex-item">
-            <img src="https://as1.ftcdn.net/v2/jpg/02/81/01/82/1000_F_281018202_g9sN7xwFfYrds9Rsgp8UwaUNEvcaKOoq.jpg"/>
-          <h6>Delhi</h6>
-        </div>
-        <div class="flex-item">
-            <img src="https://as1.ftcdn.net/v2/jpg/02/81/01/82/1000_F_281018202_g9sN7xwFfYrds9Rsgp8UwaUNEvcaKOoq.jpg"/>
-          <h6>Kochi</h6>
-        </div>
-        <div class="flex-item">
-            <img src="https://as1.ftcdn.net/v2/jpg/02/81/01/82/1000_F_281018202_g9sN7xwFfYrds9Rsgp8UwaUNEvcaKOoq.jpg"/>
-          <h6>Varnasi</h6>
-        </div>
-        <div class="flex-item">
-            <img src="https://as1.ftcdn.net/v2/jpg/02/81/01/82/1000_F_281018202_g9sN7xwFfYrds9Rsgp8UwaUNEvcaKOoq.jpg"/>
-          <h6>Chennai</h6>
-        </div>
-      </div>
-      <div  style="background-color: rgba(171, 225, 254, 0.2);width: 100%;" class="py-2 mt-4">
-      <div class="container footer">
-        <div class="row">
-            <div class="col">
-                <h2>Subscribe to our news letter</h2>
-                <p>Get latest notification of colleges, exams and more ..</p>
-                <div class="d-flex justify-content-around align-items-baseline mt-4">
-                    <input type="text" class="form-control me-3" placeholder="Enter your email address">
-                    <input type="text" class="form-control me-3" placeholder="enter your number">
-                    <input type="text" class="form-control me-3" placeholder="enter course name">
-                    <input type="text" class="btn btn-primary" value="Subscribe now!">
-                </div>
-            </div>
-        </div>
-        <div class="my-3" style="border-top: 2px solid rgba(67, 185, 249, 0.2);" ></div>
-        <div class="row" >
-            <div class="col-md-3">
-                <h3>COLLEGE WORLD</h3>
-            </div>
-            <div class="col-md-3">
-                <h5>Top Universities</h5>
-                <p>Engineesing</p>
-                <p>Management</p>
-                <p>Medical</p>
-                <p>Law</p>
-                <p>...</p>
-            </div>
-            <div class="col-md-3">
-                <h5>Top College</h5>
-                <p>MBA</p>
-                <p>MCA</p>
-                <p>MTech</p>
-                <p>...</p>
-            </div>
-            <div class="col-md-3">
-                <h5>Top Cities</h5>
-                <p>Coimbatore</p>
-                <p>Chennai</p>
-                <p>Delhi</p>
-                <p>...</p>
-            </div>
-            
-        </div>
-        </div>
-      </div>
-      
-      <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </div>
 
-    <script>
-        const header = document.getElementById('navbar-st')
-        window.addEventListener("scroll" , function(){
-    header.classList.toggle("sticky" , window.scrollY > 0);
-})
+    
+	</main>
 
-    </script>
+	<footer>
+		<!-- place footer here -->
+	</footer>
+	
+	<!-- Bootstrap JavaScript Libraries -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+  <!-- The above code is importing the CKEditor library from a CDN (Content Delivery Network) using a
+  script tag. This library is used for creating rich text editors in web applications. -->
+  <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 </body>
+
 </html>

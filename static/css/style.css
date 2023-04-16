@@ -1,0 +1,61 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    color: #fff !important;
+}
+ 
+.logo {
+    font-family: 'Lobster Two', cursive;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.7rem;
+}
+
+.main {
+    height: 80vh !important;
+    border-radius: 0 0 50% 0; 
+    overflow: hidden !important;
+}
+
+.text-heading {
+    color: #7e00a3 !important;
+}
+
+.text-primary {
+    color: #a86db9 !important;
+}
+
+.text-secondary {
+    color: #af92b7 !important;
+}
+
+.bg-main {
+    background-color: #7e00a3 !important;
+}
+.bg-primary {
+    background-color: rgba(163, 44, 196, 0.06) !important;
+}
+
+.bg-secondary {
+    background-color: #a86db9 !important;
+}
+
+.dropdown-item.active {
+    background-color:  rgba(163, 44, 196, 0.05) !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none !important;
+}
+
+.text-sm {
+    font-size: small;
+}
+
+.btn-explore:hover {
+    transition: .4s;
+    background-color: #a455b9 !important;
+}
+
+.border-none {
+    border: none !important;
+}
