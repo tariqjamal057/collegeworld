@@ -4,110 +4,164 @@
 <html lang="en">
 
 <head>
-	<title>Title</title>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Bootstrap CSS v5.2.1 -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <!-- cdn links -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
 
-	<!-- This code is linking to Google Fonts and preconnecting to the domain to reduce the time it takes to
+  <!-- This code is linking to Google Fonts and preconnecting to the domain to reduce the time it takes to
 	establish a connection. It is also loading two font families, Lobster Two and Open Sans, with
 	different weights and styles. -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400&family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet">
 
-	<!-- Custom CSS Link -->
-	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Custom CSS Link -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+  <style>
+    ul {
+      display: flex;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .list {
+      margin-right: 20px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      color: #555;
+      transition: all 0.3s ease;
+    }
+
+
+    .product {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+      width: 100% !important;
+    }
+
+    .itemBox {
+      width: 100% !important;
+    }
+  </style>
 </head>
 
 <body>
-	
 
-	<main>
-		<div class="main bg-primary">
-			<header>
+
+  <main>
+    <div class="main bg-primary">
+      <header>
         <nav class="navbar navbar-expand-lg bg-tranparent">
           <div class="container">
-              <a class="navbar-brand text-primary logo" href="#">College World</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
-                      <li class="nav-item">
-                          <a class="nav-link active text-primary" aria-current="page" href="#">Home</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link active text-primary" aria-current="page" href="#">Colleges</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link active text-primary" aria-current="page" href="#">Study Abroad</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link active text-primary" aria-current="page" href="#">Exams</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link active text-primary" aria-current="page" href="#">News</a>
-                      </li>
-                      <li class="nav-item dropdown text-primary ">
-                          <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button"
-                              data-bs-toggle="dropdown" aria-expanded="false">
-                              More
-                          </a>
-                          <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                              <li><a class="dropdown-item text-white" href="#">Write Reviews</a></li>
-                              <li><a class="dropdown-item text-white" href="#">Q&A</a></li>
-                              <li><a class="dropdown-item text-white" href="#">College Predictor</a></li>
-                          </ul>
-                      </li>
-                      <li class="nav-item dropdown text-primary ">
-                        <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <svg viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"
-                              stroke-width="0.00024000000000000003" style="width: 25px;">
-                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                              <g id="SVGRepo_iconCarrier">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 15.0141 20.6665 17.7167 18.5573 19.5501C18.0996 18.3251 17.306 17.2481 16.2613 16.4465C15.0388 15.5085 13.5409 15 12 15C10.4591 15 8.96118 15.5085 7.73867 16.4465C6.69405 17.2481 5.90038 18.3251 5.44269 19.5501C3.33349 17.7167 2 15.0141 2 12ZM16.8296 20.7059C16.8337 20.7212 16.8381 20.7363 16.8429 20.7512C15.4081 21.5469 13.757 22 12 22C10.243 22 8.59193 21.5469 7.15711 20.7512C7.16185 20.7363 7.16628 20.7212 7.17037 20.7059C7.45525 19.6427 8.08297 18.7033 8.95619 18.0332C9.82942 17.3632 10.8993 17 12 17C13.1007 17 14.1706 17.3632 15.0438 18.0332C15.917 18.7033 16.5448 19.6427 16.8296 20.7059ZM10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9ZM12 5C9.79086 5 8 6.79086 8 9C8 11.2091 9.79086 13 12 13C14.2091 13 16 11.2091 16 9C16 6.79086 14.2091 5 12 5Z"
-                                  fill="#a86db9"></path>
-                                <rect x="2.5" y="2.5" width="19" height="19" rx="9.5" stroke="#a86db9"></rect>
-                              </g>
-                            </svg>
-                        </a>
-                        <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item text-white" href="#">Profile</a></li>
-                            <li><a class="dropdown-item text-white" href="#">Logout</a></li>
-                        </ul>
-                      </li>
+            <a class="navbar-brand text-primary logo" href="#">College World</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                <li class="nav-item">
+                  <a class="nav-link active text-primary" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active text-primary" aria-current="page" href="#">Colleges</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active text-primary" aria-current="page" href="#">Study Abroad</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active text-primary" aria-current="page" href="#">Exams</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active text-primary" aria-current="page" href="#">News</a>
+                </li>
+                <li class="nav-item dropdown text-primary ">
+                  <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    More
+                  </a>
+                  <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item text-white" href="#">Write Reviews</a></li>
+                    <li><a class="dropdown-item text-white" href="#">Q&A</a></li>
+                    <li><a class="dropdown-item text-white" href="#">College Predictor</a></li>
                   </ul>
-              </div>
+                </li>
+                {% if request.user.is_authenticated %}
+
+                <li class="nav-item dropdown text-primary ">
+                  <a class="nav-link dropdown-toggle text-primary" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg viewBox="-2.4 -2.4 28.80 28.80" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000"
+                      stroke-width="0.00024000000000000003" style="width: 25px;">
+                      <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                      <g id="SVGRepo_iconCarrier">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                          d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 15.0141 20.6665 17.7167 18.5573 19.5501C18.0996 18.3251 17.306 17.2481 16.2613 16.4465C15.0388 15.5085 13.5409 15 12 15C10.4591 15 8.96118 15.5085 7.73867 16.4465C6.69405 17.2481 5.90038 18.3251 5.44269 19.5501C3.33349 17.7167 2 15.0141 2 12ZM16.8296 20.7059C16.8337 20.7212 16.8381 20.7363 16.8429 20.7512C15.4081 21.5469 13.757 22 12 22C10.243 22 8.59193 21.5469 7.15711 20.7512C7.16185 20.7363 7.16628 20.7212 7.17037 20.7059C7.45525 19.6427 8.08297 18.7033 8.95619 18.0332C9.82942 17.3632 10.8993 17 12 17C13.1007 17 14.1706 17.3632 15.0438 18.0332C15.917 18.7033 16.5448 19.6427 16.8296 20.7059ZM10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9ZM12 5C9.79086 5 8 6.79086 8 9C8 11.2091 9.79086 13 12 13C14.2091 13 16 11.2091 16 9C16 6.79086 14.2091 5 12 5Z"
+                          fill="#a86db9"></path>
+                        <rect x="2.5" y="2.5" width="19" height="19" rx="9.5" stroke="#a86db9"></rect>
+                      </g>
+                    </svg>
+                  </a>
+                  <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item text-white" href="#">{{ request.user }}</a></li>
+                    <li><a class="dropdown-item text-white" href="{% url 'login' %}">Logout</a></li>
+                  </ul>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                  <a class="nav-link active text-primary btn bg-secondary" aria-current="page"
+                    href="{% url 'login' %}">Login</a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
           </div>
         </nav>
-			</header>
+      </header>
       <div class="container">
         <div class="d-flex justify-content-between align-items-center">
           <div style="flex: 1;">
             <p class="text-secondary m-0 text-sm">College Search Engine</p>
             <h3 class="text-heading">Connect With College</h3>
-            <p class="text-secondary text-sm">College and scholorship programe are looking for student like you and help them find by joining our free college search engine </p>
+            <p class="text-secondary text-sm">College and scholorship programe are looking for student like you and help
+              them find by joining our free college search engine </p>
             <button class="bg-secondary text-white rounded-2 p-2 btn-explore btn text-sm">Explore Now &rarr;</button>
           </div>
           <img src="{% static 'images/home1.svg' %}" alt="" width="400px" height="400px" style="flex: 1">
         </div>
       </div>
-		</div>
+    </div>
     <div class="container">
       <div class="college-stats d-flex justify-content-center align-items-center flex-column my-5">
         <h3 class="text-primary mb-4">College World Stats</h3>
         <div class="card-container d-flex justify-content-around align-items-center w-100 ">
           <div class="card d-flex flex-column justify-content-center align-items-center border-none">
             <svg fill="#a36db6" height="50px" width="50px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 398.97 398.97" xml:space="preserve" stroke="#a36db6">
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 398.97 398.97" xml:space="preserve"
+              stroke="#a36db6">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
               <g id="SVGRepo_iconCarrier">
@@ -132,8 +186,9 @@
             <p class="text-secondary text-sm">College</p>
           </div>
           <div class="card d-flex flex-column justify-content-center align-items-center border-none">
-            <svg fill="#a86db9" style="width: 50px;height: 40px;" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.002 512.002" xml:space="preserve" stroke="#a86db9">
+            <svg fill="#a86db9" style="width: 50px;height: 40px;" version="1.1" id="Layer_1"
+              xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 512.002 512.002" xml:space="preserve" stroke="#a86db9">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
               <g id="SVGRepo_iconCarrier">
@@ -161,8 +216,8 @@
           </div>
           <div class="card d-flex flex-column justify-content-center align-items-center border-none">
             <svg height="50px" width="50px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-51.2 -51.2 614.40 614.40" xml:space="preserve" fill="#000000"
-              stroke="#000000">
+              xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-51.2 -51.2 614.40 614.40" xml:space="preserve"
+              fill="#000000" stroke="#000000">
               <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
               <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
               <g id="SVGRepo_iconCarrier">
@@ -188,21 +243,435 @@
       </div>
     </div>
 
-    
-	</main>
+    <div class="container my-4">
+      <h3 class="text-primary mb-4">Select your goal</h3>
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="inam" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Engineering</h6>
+                            <p class="card-text text-dark">1042 college</p>
+                          </div>
+                        </div>
 
-	<footer>
-		<!-- place footer here -->
-	</footer>
-	
-	<!-- Bootstrap JavaScript Libraries -->
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+                      </div>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+                    </div>
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Engineering</h6>
+                            <p class="card-text text-dark">243 Management</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Science</h6>
+                            <p class="card-text text-dark">2550 college</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Pharmacy</h6>
+                            <p class="card-text text-dark">325 college</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+              <div class="carousel-item">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Arts</h6>
+                            <p class="card-text text-dark">2933 college</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Law</h6>
+                            <p class="card-text text-dark">333 college</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Design</h6>
+                            <p class="card-text text-dark">877 college</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Medical</h6>
+                            <p class="card-text text-dark">2044 college</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+              <div class="carousel-item">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Agri</h6>
+                            <p class="card-text text-dark">989 college</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Commerce</h6>
+                            <p class="card-text text-dark">9797 college</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Educational</h6>
+                            <p class="card-text text-dark">8888 college</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                    <div class="col-sm-12 col-lg-3">
+                      <div class="card rounded bg-primary">
+                        <div class="card-body bg-transparent flex flex-row">
+                          <div class="">
+                            <h6 class="card-text text-dark font-weight-bold">Commerce</h6>
+                            <p class="card-text text-dark">9797 college</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+            </div>
+            <a href="#inam" class="carousel-control-prev" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a href="#inam" class="carousel-control-next" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="container">
+      <h3 class="text-primary mb-4">College Ranking</h3>
+      <section class=" d-flex justify-content-center align-items-start flex-column">
+        <ul>
+          <li class="list btn btn-light bg-secondary" data-filter="nirf">NIRF</li>
+          <li class="list btn btn-light" data-filter="outlook">Outlook</li>
+          <li class="list btn btn-light" data-filter="toi">Times Of India</li>
+          <li class="list btn btn-light" data-filter="et">Economic Times</li>
+        </ul>
+        <div class="product">
+          <table class="table table-hover itemBox text-dark w-100" data-item="nirf">
+            <tr>
+              <th>
+                College
+              </th>
+              <th>
+                Ranking
+              </th>
+            </tr>
+            <tr>
+              <td>Indian Institute of Science [IISc], Bangalore</td>
+              <td>1 out of 200</td>
+            </tr>
+            <tr>
+              <td>IIT Madras [IITM], Chennai</td>
+              <td>1 out of 50</td>
+            </tr>
+            <tr>
+              <td>Indian Institute of Science [IISc], Bangalore</td>
+              <td>1 out of 80</td>
+            </tr>
+            <tr>
+              <td>Jawaharlal Nehru University [JNU], Delhi</td>
+              <td>2 out of 200</td>
+            </tr>
+          </table>
+          <table class="table table-hover itemBox text-dark w-100" data-item="outlook">
+            <tr>
+              <th>
+                College
+              </th>
+              <th>
+                Ranking
+              </th>
+            </tr>
+            <tr>
+              <td>Jawaharlal Nehru University [JNU], Delhi</td>
+              <td>2 out of 200</td>
+            </tr>
+            <tr>
+              <td>Indian Institute of Science [IISc], Bangalore</td>
+              <td>1 out of 80</td>
+            </tr>
+            <tr>
+              <td>IIT Madras [IITM], Chennai</td>
+              <td>1 out of 50</td>
+            </tr>
+            <tr>
+              <td>Indian Institute of Science [IISc], Bangalore</td>
+              <td>1 out of 200</td>
+            </tr>
+          </table>
+          <table class="table table-hover itemBox text-dark w-100" data-item="toi">
+            <tr>
+              <th>
+                College
+              </th>
+              <th>
+                Ranking
+              </th>
+            </tr>
+            <tr>
+              <td>Jawaharlal Nehru University [JNU], Delhi</td>
+              <td>2 out of 200</td>
+            </tr>
+            <tr>
+              <td>Indian Institute of Science [IISc], Bangalore</td>
+              <td>1 out of 80</td>
+            </tr>
+            <tr>
+              <td>IIT Madras [IITM], Chennai</td>
+              <td>1 out of 50</td>
+            </tr>
+            <tr>
+              <td>Indian Institute of Science [IISc], Bangalore</td>
+              <td>1 out of 200</td>
+            </tr>
+          </table>
+          <table class="table table-hover itemBox text-dark w-100" data-item="et">
+            <tr>
+              <th>
+                College
+              </th>
+              <th>
+                Ranking
+              </th>
+            </tr>
+            <tr>
+              <td>Indian Institute of Science [IISc], Bangalore</td>
+              <td>1 out of 80</td>
+            </tr>
+            <tr>
+              <td>IIT Madras [IITM], Chennai</td>
+              <td>1 out of 50</td>
+            </tr>
+            <tr>
+              <td>Indian Institute of Science [IISc], Bangalore</td>
+              <td>1 out of 200</td>
+            </tr>
+            <tr>
+              <td>PSG Institute of Technology</td>
+              <td>4 out of 100</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div class="container my-4">
+      <h3 class="text-primary">Subscribe Newsletter</h3>
+      <p class="text-secondary mb-4">Get latest notification of college, exams, etc ...</p>
+      <form class="d-flex justify-content-between align-items-center">
+        <input type="name" class="form-control mr-5" placeholder="Enter Name">
+        <input type="email" name="" id="" class="form-control mr-5" placeholder="Enter Email">
+        <input type="submit" class="btn bg-secondary">
+      </form>
+    </div>
+
+  </main>
+
+  <footer>
+    <!-- place footer here -->
+    <div style="width: 100%;" class="pt-4 pb-3 mt-4 bg-primary">
+      <div class="container footer text-dark">
+        <div class="row">
+          <div class="col-md-3">
+            <h3 class="text-secondary">COLLEGE WORLD</h3>
+          </div>
+          <div class="col-md-3 text-secondary">
+            <h5>Top Universities</h5>
+            <p>Engineesing</p>
+            <p>Management</p>
+            <p>Medical</p>
+            <p>Law</p>
+            <p>...</p>
+          </div>
+          <div class="col-md-3 text-secondary">
+            <h5>Top College</h5>
+            <p>MBA</p>
+            <p>MCA</p>
+            <p>MTech</p>
+            <p>...</p>
+          </div>
+          <div class="col-md-3 text-secondary">
+            <h5>Top Cities</h5>
+            <p>Coimbatore</p>
+            <p>Chennai</p>
+            <p>Delhi</p>
+            <p>...</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div style="width: 100% !important;" class="bg-secondary d-flex justify-content-center align-items-center py-3">
+      <p class="m-0">© 2023 CollegeWorld. All Rights Reserved</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JavaScript Libraries -->
 
   <!-- The above code is importing the CKEditor library from a CDN (Content Delivery Network) using a
   script tag. This library is used for creating rich text editors in web applications. -->
   <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+
+  <script>
+    // Get all the filter options
+    const filterOptions = document.querySelectorAll('.list');
+
+    // Get all the item boxes
+    const itemBoxes = document.querySelectorAll('.itemBox');
+
+    itemBoxes.forEach(itemBox => {
+
+      // If the item box has the same data-item value as the filterValue OR the filterValue is 'all', show the item box, else hide it
+      if (itemBox.getAttribute('data-item') === "nirf") {
+        itemBox.style.display = 'block';
+
+      } else {
+        itemBox.style.display = 'none';
+      }
+    });
+
+    // Add event listener to each filter option
+    filterOptions.forEach(filterOption => {
+      filterOption.addEventListener('click', () => {
+
+        // Get the data-filter attribute of the clicked filter option
+        const filterValue = filterOption.getAttribute('data-filter');
+
+        filterOptions.forEach((list) => {
+          list.classList.remove('bg-secondary')
+        })
+
+        filterOption.classList.add('bg-secondary')
+
+        // Loop through all item boxes
+        itemBoxes.forEach(itemBox => {
+
+          // If the item box has the same data-item value as the filterValue OR the filterValue is 'all', show the item box, else hide it
+          if (itemBox.getAttribute('data-item') === filterValue || filterValue === 'all') {
+            itemBox.style.display = 'block';
+
+          } else {
+            itemBox.style.display = 'none';
+          }
+        });
+      });
+    });
+
+
+    $(".custom-carousel").owlCarousel({
+      autoWidth: true,
+      loop: true
+    });
+    $(document).ready(function () {
+      $(".custom-carousel .item").click(function () {
+        $(".custom-carousel .item").not($(this)).removeClass("active");
+        $(this).toggleClass("active");
+      });
+    });
+
+  </script>
 </body>
 
 </html>
