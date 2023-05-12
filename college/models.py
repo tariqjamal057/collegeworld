@@ -3,6 +3,7 @@ from core import db
 from django.core.validators import MaxValueValidator
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
+from datetime import datetime
 
 class Accrediation(db.BaseModal):
     COUNTRY_TYPE_INDIA = "India"
@@ -26,9 +27,15 @@ class Accrediation(db.BaseModal):
     short_name = models.CharField(max_length=250)
     country = models.CharField(max_length=250, choices=COUNTRY_TYPES, default=COUNTRY_TYPE_INDIA)
 
+    def __str__(self):
+        return self.name
+
 
 class Facility(db.BaseModal):
     name = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.name
 
 class College(db.BaseModal):
     GENDER_ACCEPTED_CO_ED = "Co-Ed"
@@ -47,8 +54,14 @@ class College(db.BaseModal):
         (COLLEGE_TYPE_UNIVERSITY, COLLEGE_TYPE_UNIVERSITY),
     )
 
+    def img_path(instance, filename):
+        extension = 'png'
+        timestamp = datetime.now().strftime('%Y-%m-%d_%H:%M:%S') 
+        return f'college/{instance.id}/IMG_{instance.name}_{timestamp}.{extension}'
+
     name = models.CharField(max_length=250)
     description = RichTextUploadingField()
+    image = models.ImageField(upload_to=img_path, null=True)
     gender_accepted = models.CharField(max_length=250, choices=GENDER_ACCEPTED_TYPES, default=GENDER_ACCEPTED_CO_ED)
     college_type = models.CharField(max_length=250, choices=COLLEGE_TYPES, default=COLLEGE_TYPE_COLLEGE)
     affiliated = models.CharField(max_length=250)
@@ -62,6 +75,9 @@ class College(db.BaseModal):
     contact1 = models.IntegerField(validators=[MaxValueValidator(50)], null=True, blank=True)
     facility = models.ManyToManyField(Facility)
 
+    def __str__(self):
+        return self.name
+
 
 RANK_TYPE_OVERALL = "Overall"
 RANK_TYPE_ENGINEERING = "Engineering"
@@ -74,6 +90,47 @@ RANK_TYPES = (
     (RANK_TYPE_PHARMACY, RANK_TYPE_PHARMACY),
     (RANK_TYPE_MANAGEMENT, RANK_TYPE_MANAGEMENT),
 )
+
+
+class Degree(models.Model):
+    DEGREE_TYPE_ENGINEERING = "Engineering"
+    DEGREE_TYPE_ARTS = "Arts"
+    DEGREE_TYPE_NURSING = "Nursing"
+    DEGREE_TYPE_LAW = "Law"
+
+    DEGREE_TYPES = (
+        (DEGREE_TYPE_ENGINEERING, DEGREE_TYPE_ENGINEERING),
+        (DEGREE_TYPE_ARTS, DEGREE_TYPE_ARTS),
+        (DEGREE_TYPE_NURSING, DEGREE_TYPE_NURSING),
+        (DEGREE_TYPE_LAW, DEGREE_TYPE_LAW),
+    )
+
+    DEGREE_ROLE_BACHELOR = "Bachelor"
+    DEGREE_ROLE_MASTER = "Master"
+    DEGREE_ROLE_DOCTRATE = "Doctrate"
+
+    DEGREE_ROLES = (
+        (DEGREE_ROLE_BACHELOR, DEGREE_ROLE_BACHELOR),
+        (DEGREE_ROLE_MASTER, DEGREE_ROLE_MASTER),
+        (DEGREE_ROLE_DOCTRATE, DEGREE_ROLE_DOCTRATE),
+    )
+
+    name = models.CharField(max_length=250)
+    short_name = models.CharField(max_length=250)
+    degree_type = models.CharField(max_length=250, choices=DEGREE_TYPES)
+    degree_role = models.CharField(max_length=250, choices=DEGREE_ROLES) 
+
+    def __str__(self):
+        return self.name
+
+class NewsLetter(models.Model):
+    name = models.CharField(max_length=250)
+    email = models.EmailField()
+    course = models.ForeignKey(Degree, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
 class NIRF(models.Model):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
@@ -122,11 +179,6 @@ class IndianExpress(models.Model):
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class TimesofIndia(models.Model):
-    college = models.ForeignKey(College, on_delete=models.CASCADE)
-    year = models.IntegerField()
-    rank = models.IntegerField()
-    type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
 class IndiaEducation(models.Model):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
@@ -141,12 +193,6 @@ class USNews(models.Model):
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
 class MBAUniverse(models.Model):
-    college = models.ForeignKey(College, on_delete=models.CASCADE)
-    year = models.IntegerField()
-    rank = models.IntegerField()
-    type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
-
-class TimesofIndia(models.Model):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
