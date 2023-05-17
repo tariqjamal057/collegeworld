@@ -43,7 +43,7 @@ def show_label(field):
     else:
         required = ""
     return mark_safe(
-        '<label for="{}" class="mb-3.6 text-sm fs-6 text-dark">{} {}</label>'.format(
+        '<label for="{}" class="mb-3.6 text-sm mb-2 text-dark">{} {}</label>'.format(
             field.label, field.label, required
         )
     )

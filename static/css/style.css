@@ -63,6 +63,10 @@ body {
     background-color:  #7e00a3 !important;
 }
 
+.btn-secondary {
+    background-color: #a86db9 !important;
+}
+
 #college_img {
     width: 100%;
     height: 80vh;
@@ -74,4 +78,13 @@ body {
 #search_college:focus {
     background-color: #fafafa;
     box-shadow: 0 0 0 0.25rem rgb(201, 181, 207, 0.7);
+}
+
+#college_card_body:nth-child(2) {
+    color: #000 !important;
+    font-size: small;
+}
+
+.active>.page-link, .page-link.active {
+    background-color: #7e00a3 !important;
 }

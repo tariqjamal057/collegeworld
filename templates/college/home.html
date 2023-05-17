@@ -75,7 +75,7 @@
       <header>
         <nav class="navbar navbar-expand-lg bg-tranparent">
           <div class="container">
-            <a class="navbar-brand text-primary logo" href="#">College World</a>
+            <a class="navbar-brand text-primary logo" href="{% url 'home' %}">College World</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
               aria-label="Toggle navigation">
@@ -84,13 +84,14 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
                 <li class="nav-item">
-                  <a class="nav-link active text-primary" aria-current="page" href="#">Home</a>
+                  <a class="nav-link active text-primary" aria-current="page" href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active text-primary" aria-current="page" href="{% url 'college' %}">Colleges</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active text-primary" aria-current="page" href="#">Study Abroad</a>
+                  <a class="nav-link active text-primary" aria-current="page" href="{% url 'study-abroad' %}">Study
+                    Abroad</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link active text-primary" aria-current="page" href="#">Exams</a>
@@ -563,17 +564,17 @@
       <p class="text-secondary mb-4">Get latest notification of college, exams, etc ...</p>
       <form method="post" class="d-flex justify-content-between align-items-end">
         {% csrf_token %}
-        <div class=""w-100>
+        <div class="" w-100>
           {{ newsletter.name |show_label }}
           {{ newsletter.name }}
           {{ newsletter.name |show_field_errors }}
         </div>
-        <div class=""w-100>
+        <div class="" w-100>
           {{ newsletter.email |show_label }}
           {{ newsletter.email }}
           {{ newsletter.email |show_field_errors }}
         </div>
-        <div class=""w-100>
+        <div class="" w-100>
           {{ newsletter.course |show_label }}
           {{ newsletter.course }}
           {{ newsletter.course |show_field_errors }}
@@ -624,75 +625,75 @@
   </footer>
 
 </body>
-  <!-- Bootstrap JavaScript Libraries -->
+<!-- Bootstrap JavaScript Libraries -->
 
-  <!-- The above code is importing the CKEditor library from a CDN (Content Delivery Network) using a
+<!-- The above code is importing the CKEditor library from a CDN (Content Delivery Network) using a
   script tag. This library is used for creating rich text editors in web applications. -->
-  <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="{% static 'js/script.js' %}"></script>
-  <script>
-    // Get all the filter options
-    const filterOptions = document.querySelectorAll('.list');
+<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script>
+  // Get all the filter options
+  const filterOptions = document.querySelectorAll('.list');
 
-    // Get all the item boxes
-    const itemBoxes = document.querySelectorAll('.itemBox');
+  // Get all the item boxes
+  const itemBoxes = document.querySelectorAll('.itemBox');
 
-    itemBoxes.forEach(itemBox => {
+  itemBoxes.forEach(itemBox => {
 
-      // If the item box has the same data-item value as the filterValue OR the filterValue is 'all', show the item box, else hide it
-      if (itemBox.getAttribute('data-item') === "nirf") {
-        itemBox.style.display = 'block';
+    // If the item box has the same data-item value as the filterValue OR the filterValue is 'all', show the item box, else hide it
+    if (itemBox.getAttribute('data-item') === "nirf") {
+      itemBox.style.display = 'block';
 
-      } else {
-        itemBox.style.display = 'none';
-      }
-    });
+    } else {
+      itemBox.style.display = 'none';
+    }
+  });
 
-    // Add event listener to each filter option
-    filterOptions.forEach(filterOption => {
-      filterOption.addEventListener('click', () => {
+  // Add event listener to each filter option
+  filterOptions.forEach(filterOption => {
+    filterOption.addEventListener('click', () => {
 
-        // Get the data-filter attribute of the clicked filter option
-        const filterValue = filterOption.getAttribute('data-filter');
+      // Get the data-filter attribute of the clicked filter option
+      const filterValue = filterOption.getAttribute('data-filter');
 
-        filterOptions.forEach((list) => {
-          list.classList.remove('bg-secondary')
-        })
+      filterOptions.forEach((list) => {
+        list.classList.remove('bg-secondary')
+      })
 
-        filterOption.classList.add('bg-secondary')
+      filterOption.classList.add('bg-secondary')
 
-        // Loop through all item boxes
-        itemBoxes.forEach(itemBox => {
+      // Loop through all item boxes
+      itemBoxes.forEach(itemBox => {
 
-          // If the item box has the same data-item value as the filterValue OR the filterValue is 'all', show the item box, else hide it
-          if (itemBox.getAttribute('data-item') === filterValue || filterValue === 'all') {
-            itemBox.style.display = 'block';
+        // If the item box has the same data-item value as the filterValue OR the filterValue is 'all', show the item box, else hide it
+        if (itemBox.getAttribute('data-item') === filterValue || filterValue === 'all') {
+          itemBox.style.display = 'block';
 
-          } else {
-            itemBox.style.display = 'none';
-          }
-        });
+        } else {
+          itemBox.style.display = 'none';
+        }
       });
     });
+  });
 
-    $(document).ready(function () {
-      $('.select2-dropdown').select2();
+  $(document).ready(function () {
+    $('.select2-dropdown').select2();
+  });
+
+  $(".custom-carousel").owlCarousel({
+    autoWidth: true,
+    loop: true
+  });
+  $(document).ready(function () {
+    $(".custom-carousel .item").click(function () {
+      $(".custom-carousel .item").not($(this)).removeClass("active");
+      $(this).toggleClass("active");
     });
-
-    $(".custom-carousel").owlCarousel({
-      autoWidth: true,
-      loop: true
-    });
-    $(document).ready(function () {
-      $(".custom-carousel .item").click(function () {
-        $(".custom-carousel .item").not($(this)).removeClass("active");
-        $(this).toggleClass("active");
-      });
-    });
+  });
 
 
 
-  </script>
+</script>
 
 </html>

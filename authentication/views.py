@@ -30,23 +30,23 @@ def register(request):
             '''
             Need to write validation for check field existrency
             '''
-            # user, created = User.objects.get_or_create(username=username, email=email_id, first_name = first_name, last_name=last_name, is_active=False)
-            # user.set_password(password1)
-            # user.save()
+            user, created = User.objects.get_or_create(username=username, email=email_id, is_active=False)
+            user.set_password(password1)
+            user.save()
 
-            # current_site = get_current_site(request)
-            # mail_subject = 'Activation link has been sent to your email id'
-            # message = render_to_string('auth/account_activation_email.html', {
-            #     'user': user,
-            #     'domain': current_site.domain,
-            #     'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-            #     'token': account_activation_token.make_token(user),
-            # })
-            # to_email = form.cleaned_data.get('email')
-            # email = EmailMessage(
-            #     mail_subject, message, to = [to_email]
-            # )
-            # email.send()
+            current_site = get_current_site(request)
+            mail_subject = 'Activation link has been sent to your email id'
+            message = render_to_string('auth/account_activation_email.html', {
+                'user': user,
+                'domain': current_site.domain,
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user),
+            })
+            to_email = form.cleaned_data.get('email')
+            email = EmailMessage(
+                mail_subject, message, to = [to_email]
+            )
+            email.send()
 
             return redirect('account-verification')
         else:

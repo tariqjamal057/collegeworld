@@ -38,6 +38,14 @@ class Facility(db.BaseModal):
         return self.name
 
 class College(db.BaseModal):
+    COLLEGE_AFFILIATED_TYPE_AUTONOMOUS = "Autonomous"
+    COLLEGE_AFFILIATED_TYPE_NON = "Non-Autonomous"
+    COLLEGE_AFFILIATED_TYPES = (
+        (COLLEGE_AFFILIATED_TYPE_AUTONOMOUS, COLLEGE_AFFILIATED_TYPE_AUTONOMOUS),
+        (COLLEGE_AFFILIATED_TYPE_NON, COLLEGE_AFFILIATED_TYPE_NON),
+    )
+
+
     GENDER_ACCEPTED_CO_ED = "Co-Ed"
     GENDER_ACCEPTED_FEMALE = "Female"
     GENDER_ACCEPTED_MALE = "Male"
@@ -64,6 +72,7 @@ class College(db.BaseModal):
     image = models.ImageField(upload_to=img_path, null=True)
     gender_accepted = models.CharField(max_length=250, choices=GENDER_ACCEPTED_TYPES, default=GENDER_ACCEPTED_CO_ED)
     college_type = models.CharField(max_length=250, choices=COLLEGE_TYPES, default=COLLEGE_TYPE_COLLEGE)
+    affiliated_type = models.CharField(max_length=250, choices=COLLEGE_AFFILIATED_TYPES, null=True,)
     affiliated = models.CharField(max_length=250)
     accrediation = models.ForeignKey(Accrediation, on_delete=models.CASCADE)
     accrediation_grade = models.CharField(max_length=50)
@@ -92,7 +101,7 @@ RANK_TYPES = (
 )
 
 
-class Degree(models.Model):
+class Degree(db.BaseModal):
     DEGREE_TYPE_ENGINEERING = "Engineering"
     DEGREE_TYPE_ARTS = "Arts"
     DEGREE_TYPE_NURSING = "Nursing"
@@ -123,7 +132,37 @@ class Degree(models.Model):
     def __str__(self):
         return self.name
 
-class NewsLetter(models.Model):
+
+class Stream(db.BaseModal):
+    name = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.name
+
+class CollegeDegree(db.BaseModal):
+    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    degree = models.ForeignKey(Degree, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.college.name} - {self.degree.name}'
+
+class CollegeStream(db.BaseModal):
+    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    degree = models.ForeignKey(Degree, on_delete=models.CASCADE)
+    stream = models.ForeignKey(Stream, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.college.name} - {self.degree.name} - {self.stream.name}'
+
+class CollegeQuestion(db.BaseModal):
+    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    question = models.CharField(max_length=250)
+    answer = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.college.name
+
+class NewsLetter(db.BaseModal):
     name = models.CharField(max_length=250)
     email = models.EmailField()
     course = models.ForeignKey(Degree, on_delete=models.CASCADE)
@@ -131,86 +170,91 @@ class NewsLetter(models.Model):
     def __str__(self):
         return self.name
 
-class NIRF(models.Model):
+
+class Department(db.BaseModal):
+    college = models.ForeignKey(College, on_delete=models.CASCADE)
+    course = models.ForeignKey(Degree, on_delete=models.CASCADE)
+
+class NIRF(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class Outlook(models.Model):
+class Outlook(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class ARIIA(models.Model):
+class ARIIA(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class IndiaToday(models.Model):
+class IndiaToday(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class BusinessToday(models.Model):
+class BusinessToday(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class TimesofIndia(models.Model):
+class TimesofIndia(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class EconomicTimes(models.Model):
+class EconomicTimes(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class IndianExpress(models.Model):
+class IndianExpress(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
 
-class IndiaEducation(models.Model):
+class IndiaEducation(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class USNews(models.Model):
+class USNews(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class MBAUniverse(models.Model):
+class MBAUniverse(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class QS(models.Model):
+class QS(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class IIRF(models.Model):
+class IIRF(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()
     type = models.CharField(max_length=250, choices=RANK_TYPES, default=RANK_TYPE_OVERALL)
 
-class CollegeWorld(models.Model):
+class CollegeWorld(db.BaseModal):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     year = models.IntegerField()
     rank = models.IntegerField()

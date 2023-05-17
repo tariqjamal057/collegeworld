@@ -84,8 +84,12 @@ WSGI_APPLICATION = "collegeworld.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'college',
+        'USER': 'root',
+        'PASSWORD': 'Jamal@123',
+        'HOST': '127.0.0.1',
+        'PORT': '3300',
     }
 }
 
@@ -141,8 +145,8 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = 'c7de8f09f50084'
-EMAIL_HOST_PASSWORD = '1d00d338a3f6cf'
+EMAIL_HOST_USER = '9089bcec240b86'
+EMAIL_HOST_PASSWORD = '6fc78bc8d54076'
 EMAIL_PORT = '2525'

@@ -11,10 +11,11 @@
                     <a class="nav-link active text-primary" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active text-primary" aria-current="page" href="#">Colleges</a>
+                    <a class="nav-link active text-primary" aria-current="page" href="{% url 'college' %}">Colleges</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active text-primary" aria-current="page" href="#">Study Abroad</a>
+                    <a class="nav-link active text-primary" aria-current="page" href="{% url 'study-abroad' %}">Study
+                        Abroad</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active text-primary" aria-current="page" href="#">Exams</a>
@@ -37,7 +38,7 @@
                     </ul>
                 </li>
                 {% comment %}
-                
+
                 {% endcomment %}
             </ul>
         </div>
