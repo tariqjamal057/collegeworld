@@ -106,107 +106,82 @@
             </nav>
         </header>
     </header>
-    <main>
-    </main>
 
-    <div class="container py-4">
-        <h3 class="text-dark fw-bold mb-3">{{ college.name }}</h3>
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <span class="text-dark">{{ college.city }}, </span>
-                <span class="text-dark">{{ college.state }} | </span>
-                <span class="text-dark">{{ college.affiliated_type }} College | </span>
-                <span class="text-dark">{{ college.accrediation }} {{ college.accrediation_grade }} </span>
-            </div>
-        </div>
-        <img src="{{ college.image.url }}" alt="" class="my-4" style="height: 70vh;width: 100%;">
-        <div class="text-dark">
-            <h4 class="text-primary">About</h4>
-            {{ college.description|safe }}
-
-            <h4 class="text-primary">Facility</h4>
-            <ul>
-                {% for facility in college.facility.all %}
-                <li>{{ facility }}</li>
-                {% endfor %}
-            </ul>
-            <div>
-                <h4 class="text-primary">Degree</h4>
-                <div class="text-dark">
-                    {% for degree in degrees %}
-                    <h5>{{ degree.degree.name }}</h5>
-                    {% for stream in streams %}
-                    <ul>
-                        {% if degree.id == stream.degree.id %}
-                        <li>{{ stream.stream.name }}</li>
-                        {% endif %}
-                    </ul>
-                    {% endfor %}
-                    {% endfor %}
+    <div class="container py-4 bg-primary my-4">
+        <div class="d-flex justify-content-between align-items-start">
+            <div style="width: 30%;height: 75vh;" class="bg-secondary p-4 d-flex justify-content-between align-items-start flex-column">
+                <div>
+                    <img src="{% static 'images/IMG_Admin_2023-05-20_031754.png' %}" class="rounded-circle mb-2" alt="" style="height: 100px;width: 100px;">
+                    <p class="m-0">@{{ user.user.username }}</p>
+                    <p class="">📍{{ user.city }}, {{ user.state }}, {{ user.country }}</p>
+                </div>
+                <div>
+                    <p class="pb-2 pe-2 pt-2 rounded">Setting</p>
+                    <a href="{% url 'logout' %}" class="text-white pb-2 pe-2 pt-2 rounded text-decoration-none">Logout</a>
                 </div>
             </div>
-            <div>
-                <h4 class="text-primary mb-2">{{ college.name }} FAQs</h4>
-                <div class="accordion" id="accordionExample">
-                    {% for question in questions %}
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading{{ forloop.counter }}">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapse{{forloop.counter}}"
-                                aria-controls="collapse{{forloop.counter}}">
-                                {{ forloop.counter }}.{{ question.question }}
-                            </button>
-                        </h2>
-                        <div id="collapse{{forloop.counter}}" class="accordion-collapse collapse show"
-                            aria-labelledby="heading{{forloop.counter}}" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>Ans.</strong> {{ question.answer }}
-                            </div>
+            <div style="width: 70%;" class="p-4 text-dark">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h4>User Details</h4>
+                    <a href="{% url 'profile.create' %}" class="btn btn-primary btn-sm">Update</a>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" value="{{ user.name }}" readonly>
                         </div>
                     </div>
-                    {% endfor %}
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="">Gender</label>
+                            <input type="text" class="form-control" value="{{ user.gender }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="">Country</label>
+                            <input type="text" class="form-control" value="{{ user.country }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="">State</label>
+                            <input type="text" class="form-control" value="{{ user.state }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="">City</label>
+                            <input type="text" class="form-control" value="{{ user.city }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="">Address</label>
+                            <input type="text" class="form-control" value="{{ user.address }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-12 ">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h3>Education details</h3>
+                            <a href="{% url 'profile.add-edu' %}" class="btn btn-primary btn-sm">Add Education</a>
+                        </div>
+                        <div class="row">
+
+                            {% for education in educations %}
+                                <div class="col-md-4 rounded p-2 me-3 bg-secondary ms-3">
+                                    <h5>{{ education.name }}</h5>
+                                    <p id="" style="font-size: medium;">{{ education.institute_name }}</p>
+                                    <h6>{{ education.marks }}</h3>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <footer>
-        <!-- place footer here -->
-        <div style="width: 100%;" class="pt-4 pb-3 mt-4 bg-primary">
-            <div class="container footer text-dark">
-                <div class="row">
-                    <div class="col-md-3">
-                        <h3 class="text-secondary">COLLEGE WORLD</h3>
-                    </div>
-                    <div class="col-md-3 text-secondary">
-                        <h5>Top Universities</h5>
-                        <p>Engineesing</p>
-                        <p>Management</p>
-                        <p>Medical</p>
-                        <p>Law</p>
-                        <p>...</p>
-                    </div>
-                    <div class="col-md-3 text-secondary">
-                        <h5>Top College</h5>
-                        <p>MBA</p>
-                        <p>MCA</p>
-                        <p>MTech</p>
-                        <p>...</p>
-                    </div>
-                    <div class="col-md-3 text-secondary">
-                        <h5>Top Cities</h5>
-                        <p>Coimbatore</p>
-                        <p>Chennai</p>
-                        <p>Delhi</p>
-                        <p>...</p>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div style="width: 100% !important;" class="bg-secondary d-flex justify-content-center align-items-center py-3">
-            <p class="m-0">© 2023 CollegeWorld. All Rights Reserved</p>
-        </div>
-    </footer>
     <!-- Bootstrap JavaScript Libraries -->
 
     <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>

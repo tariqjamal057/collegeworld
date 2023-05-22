@@ -88,3 +88,10 @@ body {
 .active>.page-link, .page-link.active {
     background-color: #7e00a3 !important;
 }
+
+#id_gender {
+    display: flex;
+}
+#id_gender >:first-child {
+    margin-right: 15px;
+}

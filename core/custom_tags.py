@@ -35,9 +35,9 @@ def show_non_field_errors(error):
 
 @register.filter()
 def show_label(field):
-    if isinstance(field, str):
-        # Convert the field parameter to a form field object
-        field = template.Variable(field).resolve({})
+    # if isinstance(field, str):
+    #     # Convert the field parameter to a form field object
+    #     field = template.Variable(field).resolve({})
     if field.field.required:
         required = '<span class="text-danger">*</span>'
     else:

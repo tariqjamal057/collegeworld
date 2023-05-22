@@ -128,7 +128,7 @@
                     </svg>
                   </a>
                   <ul class="dropdown-menu bg-secondary" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item text-white" href="#">{{ request.user }}</a></li>
+                    <li><a class="dropdown-item text-white" href="{% url 'profile' %}">{{ request.user }}</a></li>
                     <li><a class="dropdown-item text-white" href="{% url 'login' %}">Logout</a></li>
                   </ul>
                 </li>
@@ -150,7 +150,7 @@
             <h3 class="text-heading">Connect With College</h3>
             <p class="text-secondary text-sm">College and scholorship programe are looking for student like you and help
               them find by joining our free college search engine </p>
-            <button class="bg-secondary text-white rounded-2 p-2 btn-explore btn text-sm">Explore Now &rarr;</button>
+            <a href="{% url 'college' %}" class="bg-secondary text-white rounded-2 p-2 btn-explore btn text-sm">Explore Now &rarr;</a>
           </div>
           <img src="{% static 'images/home1.svg' %}" alt="" width="400px" height="400px" style="flex: 1">
         </div>

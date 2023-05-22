@@ -31,8 +31,7 @@
 
 <body>
   {% csrf_token %}
-  <div id="college_img">
-    <header>
+    <header class="shadow-sm">
       <!-- place navbar here -->
       <header>
         <nav class="navbar navbar-expand-lg bg-tranparent">
@@ -106,104 +105,52 @@
         </nav>
       </header>
     </header>
-    <main>
-      <div class="container d-flex justify-content-center align-items-center" style="height: 60vh;width: 100%;">
-        <div class="d-flex justify-content-center align-items-center flex-column">
-          <h3 class="mb-5 text-dark fw-bold">Search BE/B.Tech Colleges, Courses and Exams</h3>
-          <form class="d-flex" style="width: 100%;">
-            <input class="form-control py-3" type="search" {% if search_query %} value="{{search_college}}" {% endif %}
-              placeholder="Search or colleges" aria-label="Search" id="search_college" name="search_college">
-            <button class="btn btn-primary" type="submit">Search</button>
-          </form>
-        </div>
-      </div>
-    </main>
-  </div>
 
-  <div class="container py-4">
-    <div class="d-flex justify-content-between align-items-center text-dark mb-2">
-      <h4 class="text-dark fw-bold mb-3">List of colleges</h4>
-      <div>
-        <p>Filter by</p>
-        <select name="degree" id="degree" class="js-example-basic-single" onchange="filter_college()">
-          {% for degree in degrees %}
-            <option value="{{ degree.id }}">{{ degree.name }}</option>
-          {% endfor %}
-        </select>
-      </div>
-    </div>
-    <div class="row" id="college_list_container">
-      {% include "college/college_list.html" %}
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="d-flex justify-content-between align-items-center">
-          <div></div>
-          <div>
-            {% if colleges.has_other_pages %}
-            <!-- Pagination -->
-            <nav class="my-3 container">
-              <ul class="pagination">
-                {% if colleges.has_previous %}
-                <li class="page-item"><a class="page-link" href="?page={{colleges.previous_page_number}}">Previous</a>
-                </li>
-                {% endif %}
-                {% for i in colleges.paginator.page_range %}
-                {% if colleges.number == i %}
-                <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
-                {% endif %}
-                {% endfor %}
-                {% if colleges.has_next %}
-                <li class="page-item "><a class="page-link" href="?page={{colleges.next_page_number}}">Next</a></li>
-                {% endif %}
-              </ul>
-            </nav>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <!-- place footer here -->
-    <div style="width: 100%;" class="pt-4 pb-3 mt-4 bg-primary">
-      <div class="container footer text-dark">
+  <div class="container py-4 text-dark">
+    <h3>Update Profile</h3>
+    <form method="post">
+        {% csrf_token %}
         <div class="row">
-          <div class="col-md-3">
-            <h3 class="text-secondary">COLLEGE WORLD</h3>
-          </div>
-          <div class="col-md-3 text-secondary">
-            <h5>Top Universities</h5>
-            <p>Engineesing</p>
-            <p>Management</p>
-            <p>Medical</p>
-            <p>Law</p>
-            <p>...</p>
-          </div>
-          <div class="col-md-3 text-secondary">
-            <h5>Top College</h5>
-            <p>MBA</p>
-            <p>MCA</p>
-            <p>MTech</p>
-            <p>...</p>
-          </div>
-          <div class="col-md-3 text-secondary">
-            <h5>Top Cities</h5>
-            <p>Coimbatore</p>
-            <p>Chennai</p>
-            <p>Delhi</p>
-            <p>...</p>
-          </div>
-
+            <div class="col-md-6 mb-3">
+                {{ form.name|show_label }}
+                {{ form.name }}
+                {{ form.name|show_field_errors }}
+            </div>
+            <div class="col-md-6 mb-3">
+                {{ form.gender|show_label }}
+                {{ form.gender }}
+                {{ form.gender|show_field_errors }}
+            </div>
+            <div class="col-md-6 mb-3">
+                {{ form.phone_number|show_label }}
+                {{ form.phone_number }}
+                {{ form.phone_number|show_field_errors }}
+            </div>
+            <div class="col-md-6 mb-3">
+                {{ form.country|show_label }}
+                {{ form.country }}
+                {{ form.country|show_field_errors }}
+            </div>
+            <div class="col-md-6 mb-3">
+                {{ form.state|show_label }}
+                {{ form.state }}
+                {{ form.state|show_field_errors }}
+            </div>
+            <div class="col-md-6 mb-3">
+                {{ form.city|show_label }}
+                {{ form.city }}
+                {{ form.city|show_field_errors }}
+            </div>
+            <div class="col-md-6 mb-3">
+                {{ form.address|show_label }}
+                {{ form.address }}
+                {{ form.address|show_field_errors }}
+            </div>
         </div>
-      </div>
-    </div>
-    <div style="width: 100% !important;" class="bg-secondary d-flex justify-content-center align-items-center py-3">
-      <p class="m-0">© 2023 CollegeWorld. All Rights Reserved</p>
-    </div>
-  </footer>
+        <input type="submit" value="Submit" class="btn btn-primary mt-4">
+    </form>
+  </div>
+
   <!-- Bootstrap JavaScript Libraries -->
 
   <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
@@ -216,27 +163,6 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
     </script>
 
-    <script>
-
-      function filter_college() {
-        console.log("Ondjbjbvcsj");
-        const csrftoken = document.querySelector('[name="csrfmiddlewaretoken"]').value
-        $.ajax({
-          type: "POST",
-          url: "{% url 'college.filter' %}",
-          headers:{"X-CSRFToken": csrftoken},
-          data: { 'degree': $("#degree").val() },
-          success: function (response) {
-            if (response["success"] === true) {
-              $("#college_list_container").html(response.html);
-            }
-          },
-          error: function () {
-            alert("No Data Found");
-          },
-        });
-      }
-    </script>
 </body>
 
 </html>

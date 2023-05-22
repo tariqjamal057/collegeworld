@@ -2,6 +2,9 @@ from django.contrib import admin
 from . import models
 
 # Register your models here.
+admin.site.register(models.UserDetail)
+admin.site.register(models.Education)
+admin.site.register(models.CounsellingData)
 admin.site.register(models.Accrediation)
 admin.site.register(models.Facility)
 admin.site.register(models.College)

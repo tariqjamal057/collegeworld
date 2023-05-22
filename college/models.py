@@ -4,7 +4,58 @@ from django.core.validators import MaxValueValidator
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from datetime import datetime
+from django.contrib.auth.models import User
 
+
+class UserDetail(db.BaseModal):
+    GENDER_FEMALE = "Female"
+    GENDER_MALE = "Male"
+    GENDERS = (
+        (GENDER_MALE, GENDER_MALE),
+        (GENDER_FEMALE, GENDER_FEMALE),
+    )
+
+    def img_path(instance, filename):
+        extension = 'png'
+        timestamp = datetime.now().strftime('%Y-%m-%d_%H:%M:%S') 
+        return f'college/user/IMG_{instance.name}_{timestamp}.{extension}'
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_data")
+    img = models.ImageField(upload_to=img_path, null=True)
+    name = models.CharField(max_length=250)
+    gender = models.CharField(max_length=250, choices=GENDERS, default=GENDER_MALE)
+    phone_number = models.IntegerField()
+    country = models.CharField(max_length=250)
+    state = models.CharField(max_length=250)
+    city = models.CharField(max_length=250)
+    address = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.name
+
+
+class CounsellingData(db.BaseModal):
+    name = models.CharField(max_length=250)
+    email = models.EmailField(max_length=250)
+    number = models.CharField(max_length=10)
+    message = models.CharField(max_length=250, null=True, blank=True)
+
+    
+    def __str__(self):
+        return self.name
+
+class Education(db.BaseModal):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_education_data")
+    name = models.CharField(max_length=250)
+    institute_name = models.CharField(max_length=250)
+    marks = models.CharField(max_length=250, null=True, blank=True)
+    
+    def __str__(self):
+        return self.name
+
+
+# The Accrediation class defines a model with fields for name, short name, and country, with country
+# choices limited to a set of predefined options.
 class Accrediation(db.BaseModal):
     COUNTRY_TYPE_INDIA = "India"
     COUNTRY_TYPE_UNITED_KINDOM = "United Kindom"
@@ -31,12 +82,16 @@ class Accrediation(db.BaseModal):
         return self.name
 
 
+# The Facility class defines a model with a name attribute and a string representation method.
 class Facility(db.BaseModal):
     name = models.CharField(max_length=250)
 
     def __str__(self):
         return self.name
 
+# The class "College" defines a model for a college with various fields such as name, description,
+# image, gender accepted, college type, affiliated type, accrediation, country, state, city, address,
+# contact, and facility.
 class College(db.BaseModal):
     COLLEGE_AFFILIATED_TYPE_AUTONOMOUS = "Autonomous"
     COLLEGE_AFFILIATED_TYPE_NON = "Non-Autonomous"
@@ -101,6 +156,8 @@ RANK_TYPES = (
 )
 
 
+# The Degree class defines a model for different types and roles of degrees with their respective
+# names and short names.
 class Degree(db.BaseModal):
     DEGREE_TYPE_ENGINEERING = "Engineering"
     DEGREE_TYPE_ARTS = "Arts"

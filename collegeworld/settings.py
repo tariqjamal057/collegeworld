@@ -146,7 +146,9 @@ CKEDITOR_CONFIGS = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_HOST_USER = '9089bcec240b86'
-EMAIL_HOST_PASSWORD = '6fc78bc8d54076'
-EMAIL_PORT = '2525'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = '19ita57@karpagamtech.ac.in'
+EMAIL_HOST_PASSWORD = 'Jamal@123' #past the key or password app here
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = '19ita57@karpagamtech.ac.in'

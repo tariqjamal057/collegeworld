@@ -24,3 +24,33 @@ const csrftoken = $("[name=csrfmiddlewaretoken]").val();
     },
   });
 }
+
+function save_cunselling_user() {
+  const csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    $.ajax({
+      type: "POST",
+      url: "/counselling/create",
+      headers:{"X-CSRFToken": csrftoken},
+      data: { 
+          'name': $('#name').val(),
+          'email': $('#email').val(),
+          'number': $('#number').val(),
+          'message': $('#message').val(),
+      },
+      success: function (response) {
+        $('#exampleModal').modal('toggle')
+          Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: `${response.data.name} our mentor will get in touch with you as soon as possible`,
+            })
+          $('#name').val("");
+          $('#email').val("");
+          $('#number').val("");
+          $('#message').val("");
+      },
+      error: function () {
+        alert("Something went wrong");
+      },
+    });
+  }

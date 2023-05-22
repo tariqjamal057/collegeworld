@@ -13,6 +13,7 @@ from django.utils.encoding import force_bytes, force_str
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 from django.contrib.auth.forms import AuthenticationForm
+from college.models import UserDetail
 
 
 @login_required(login_url = 'login')
@@ -89,7 +90,10 @@ def login_user(request):
                 user = authenticate(request, username=check_user.username, password=password)
                 if user is not None:
                     login(request, user)
+                    # if UserDetail.objects.filter(user = request.user.id).exists():
                     return redirect('home')
+                    # else:
+                    #     return redirect("profile")
                 else:
                     messages.error(request, 'Password is incorrect')
             else:
